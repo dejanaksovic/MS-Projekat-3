@@ -1,39 +1,31 @@
 //Sve promenljive stizu i vracaju se kao string
-const formatMiddleware = {
-    binToHex: (value) => {
-        let valueInHex;
-        return valueInHex
+export default function formatMiddleware() {
+    this.binToHex= (value) => {
+        return parseInt(value, 2).toString(16)
     },
 
-    hexToBin: (value) => {
-        let valueInBin;
-        return valueInBin
+    this.hexToBin= (value) => {
+        return parseInt(value, 16).toString(2)
     },
 
-    hexToDec: (value) => {
-        let valueInDec;
-        return valueInDec;
+    this.hexToDec= (value) => {
+        return parseInt(value, 16).toString()
     },
 
-    binToDec: (value) => {
-        let valueInDec;
-        return valueInDec;
+    this.binToDec= (value) => {
+        return parseInt(value, 2).toString()
     },
 
-    decToBin: (value) => {
-        let valueInBin;
-        return valueInBin;
+    this.decToBin= (value) => {
+        return value.toString(2)
     },
 
-    decToHex: (value) => {
-        let valueInHex;
-        return valueInHex;
+    this.decToHex= (value) => {
+        return value.toString(16)
     },
 
-    addBin: (valueFirst, valueSecond) => {
-        //Dodati dva broja u binarnom, stizu i vracaju se kao stringovi
+    this.addBin= (valueFirst, valueSecond) => {
+        return this.decToBin(parseInt(this.binToDec(valueFirst))+parseInt(this.binToDec(valueSecond)))
     }
 
 }
-
-export default formatMiddleware
