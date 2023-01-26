@@ -3,7 +3,7 @@ export default function Product() {
     this.value = "00000000"
     this.set = (value) => {
         this.value = value
-        while(this.value.length!=8) {
+        while(this.value.length < 16) {
             this.value = 0 + this.value
         }
     }
