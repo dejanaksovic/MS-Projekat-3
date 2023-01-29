@@ -17,11 +17,16 @@ export default function ALU() {
 
             if(this.currStep == 1 && this.carryOut == '1'){
                 returnVal = this.steps[this.currStep](product, multiplicand)
-            }
-            
-            if(this.currStep == 0){
+                console.log("Added multiplicand to product")
+            } else if(this.currStep == 1 && this.carryOut == '0'){
+                console.log("Multiplicand and product addition failed because of the multiplier carryout bit being 1")
+            } else if(this.currStep == 0){
                 this.iteration++
+                console.log("Shitfed multiplier to the right")
+            }else {
+                console.log("Shifted multiplicand to the left")    
             }
+
             this.currStep++
             this.currStep %= this.steps.length
 

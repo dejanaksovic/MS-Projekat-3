@@ -10,7 +10,7 @@ const button = document.querySelector("button")
 
 const mulLocal = new Multiplicand()
 const mulpLocal = new Multiplier()
-const product = new Product(8)
+const product = new Product(16)
 const controlLocal = new Control()
 const formaterLocal = new formater()
 const ALULocal = new ALU()
@@ -22,7 +22,7 @@ ALULocal.steps.push(mulLocal.shiftL)
 button.addEventListener("click", e=> {
     const test = ALULocal.stepFunc(product.value, mulLocal.value, mulpLocal.value.slice(-1))
     
-    if(test) {console.log(test)
+    if(test) {
         product.set(test)
     }
     app.innerHTML = mulLocal.render() + mulpLocal.render() + product.render() + controlLocal.body
