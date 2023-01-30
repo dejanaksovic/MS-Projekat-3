@@ -9,7 +9,7 @@ export default function ALU() {
             let returnVal = undefined
             
             if(this.currStep != 1){
-                returnVal = this.steps[this.currStep](product, multiplicand)
+                this.steps[this.currStep]()
                 if(this.currStep == 0){
                     this.carryOut = carryOut
                 }
