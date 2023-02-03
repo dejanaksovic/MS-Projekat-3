@@ -75,18 +75,3 @@ body{
     margin: 0%;
     padding: 0%;
 }
-
-
-.input{
-    border: 1px solid red;
-    align-self: flex-end;
-    width: 100%;
-    margin-bottom: 10%;
-}
-.test{
-    width: 90%;
-    margin: 1rem;
-}
-input{
-    width: 90%;
-}
