@@ -8,18 +8,49 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="main">
-        
-    </div>
-    <div class="input">
-        <div class="format">
-            
+
+    <div class="container">
+        <div class="form">
+            <form >
+                <div class="form-group">
+                    <label for="type">Choose the type you want:</label>
+                    <select id="type">
+                        <option value="null"> </option>
+                        <option value="multiplier">Multiplier</option>
+                        <option value="multiplier-optimised">Optimised multiplier</option>
+                        <option value="divider">Divider</option>
+                        <option value="divider-optimised">Optimised divider</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="">
+                        16:
+                        <input type="radio" name="bits" value="16">
+                    </label>
+                        32:
+                    <label for="">
+                        <input type="radio" name="bits" value="32">
+                    </label>
+                </div>
+
+                <div class="custom-dropdown">
+                    <div class="form-group">
+                        <label for="first-operand">Multiplicant:</label>
+                        <input id="first-operand" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="second-operand">Multiplier:</label>
+                        <input type="text" id="second-operand">
+                    </div>
+                </div>
+
+                <button role = "submit" class="form-button">ACCEPT</button>
+            </form>
         </div>
-        <div class="Input">
-            <label for="fname">Input</label>
-            <input type="text" id="input">
+        <div id="main">
         </div>
-        <button class="test">TEST</button>  
+        <button class="test" defer>TEST</button>
     </div>
     <script src="app.js" type="module"></script>
 </body>
