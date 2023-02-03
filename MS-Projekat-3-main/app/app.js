@@ -3,7 +3,10 @@ import Multiplier from './components/multiplier.js'
 import Product from './components/product.js'
 import Control from './components/control.js'
 import ALU from './components/ALU.js'
+
+//Middleware
 import formater from './middleware/formatMiddleware.js'
+import extender from './middleware/bitBaseExtentionMiddleware.js'
 
 //app
 const app = document.querySelector("#main")
@@ -32,10 +35,12 @@ buttonTest.addEventListener("click", e=> {
     if(test) {console.log(test)
         product.set(test)
     }
-    app.innerHTML = mulLocal.render() + mulpLocal.render() + product.render() + controlLocal.body + ALULocal.render()
+    renderMultiplier()
 })
 
-app.innerHTML = mulLocal.render() + mulpLocal.render() + product.render()+ ALULocal.render() + controlLocal.body
+const renderMultiplier = () => {
+    app.innerHTML = mulLocal.render() + mulpLocal.render() + product.render() + controlLocal.body + ALULocal.render()
+}
 
 //Kreiranje aplikacije
 app.style.setProperty("display", "none")
@@ -114,9 +119,17 @@ firstOperand.addEventListener("input", e=> {
 })
 
 secondOperand.addEventListener("input", e=> {
-    if(checkValidation(secondOperand, bits/2)) {
+    if(checkValidation(secondOperand.value, bits/2)) {
         secondOperandInput = secondOperand.value
         return
     }
     secondOperand.value = secondOperandInput
+})
+
+buttonSubmit.addEventListener("click", e=> {
+    e.preventDefault()
+    mulLocal.value = extender(firstOperandInput, bits)
+    mulpLocal.value = extender(secondOperandInput, bits/2)
+    app.style.setProperty("display", "grid")
+    renderMultiplier()
 })
