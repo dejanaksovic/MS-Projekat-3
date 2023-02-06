@@ -128,8 +128,29 @@ secondOperand.addEventListener("input", e=> {
 
 buttonSubmit.addEventListener("click", e=> {
     e.preventDefault()
-    mulLocal.value = extender(firstOperandInput, bits)
-    mulpLocal.value = extender(secondOperandInput, bits/2)
+    const firstOperandExtended = extender(firstOperandInput, bits)
+    const secondOperandExtended = extender(secondOperandInput, bits/2)
     app.style.setProperty("display", "grid")
-    renderMultiplier()
+    
+    sessionStorage.setItem("firstOperand", `${firstOperandExtended}`)
+    sessionStorage.setItem("secondOperand", `${secondOperandExtended}`)
+
+    console.log(type);
+
+    switch(type.value) {
+        case "multiplier":
+            window.location.replace("./pages/multiplier/multiplier.html")
+            break;
+        case "multiplier-optimised":
+            window.location.replace("./pages/multiplier-optimized/multiplierOptimized.html")
+            break;
+        case "divider":
+            window.location.replace("./pages/divider/divider.html")
+            break;
+        case "divider-optimised":
+            window.location.replace("./pages/divider-optimized/dividerOptimized.html")
+            break;
+        default:
+            alert("Please select the type of architecture you want") 
+    }
 })
