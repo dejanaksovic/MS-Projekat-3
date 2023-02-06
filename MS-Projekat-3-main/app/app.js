@@ -13,6 +13,7 @@ const app = document.querySelector("#main")
 
 //buttons
 const buttonTest = document.querySelector(".test")
+const buttonUndo = document.querySelector(".undo")
 const buttonSubmit = document.querySelector(".form-button")
 
 //Components
@@ -30,12 +31,28 @@ ALULocal.steps.push(mulLocal.shiftL)
 
 //Multiplier logic
 buttonTest.addEventListener("click", e=> {
-    const test = ALULocal.stepFunc(product.value, mulLocal.value, mulpLocal.value.slice(-1))
+    const test = ALULocal.stepFunc(product.value, mulLocal.value, mulpLocal.value)
     
     if(test) {console.log(test)
         product.set(test)
     }
     renderMultiplier()
+})
+
+buttonUndo.addEventListener('click', e => {
+    const undoStep = ALULocal.undo()
+    if(undoStep){
+        if(undoStep[0] == 'multiplier'){
+            mulpLocal.value = undoStep[1]
+        }else if(undoStep[0] == 'multiplicand'){
+            mulLocal.value = undoStep[1]
+        }else{
+            product.value = undoStep[1]
+        }
+        console.log(undoStep)
+        renderMultiplier()
+    }
+    
 })
 
 const renderMultiplier = () => {
