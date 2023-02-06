@@ -75,3 +75,34 @@ body{
     margin: 0%;
     padding: 0%;
 }
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    border: 1px solid black;
+    padding: 10rem;
+    background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+
+}
+.form-group{
+    display:flex ;
+    gap: 2rem;
+    font-size: 1.8rem;
+}
+.custom-dropdown{
+    display: flex;
+    gap: 2rem;
+}
+.form-button{
+    padding: .5rem;
+}
+.input{
+    font-size: 1rem;
+}

@@ -4,6 +4,8 @@ import Product from './components/multiplication/product.js'
 import Control from './components/multiplication/control.js'
 import ALU from './components/multiplication/ALU.js'
 
+import { routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized } from './config/router.js'
+
 //Middleware
 import formater from './middleware/formatMiddleware.js'
 import extender from './middleware/bitBaseExtentionMiddleware.js'
@@ -83,7 +85,7 @@ let firstOperandInput = "";
 let secondOperandInput = "";
 
 type.addEventListener("change", e => {
-    additional.style.setProperty("display", "block")
+    additional.style.setProperty("display", "flex")
 
     if(type.value.startsWith("multiplier")) {
         firstLabel.textContent = "Multiplicand"
@@ -145,8 +147,29 @@ secondOperand.addEventListener("input", e=> {
 
 buttonSubmit.addEventListener("click", e=> {
     e.preventDefault()
-    mulLocal.value = extender(firstOperandInput, bits)
-    mulpLocal.value = extender(secondOperandInput, bits/2)
+    const firstOperandExtended = extender(firstOperandInput, bits)
+    const secondOperandExtended = extender(secondOperandInput, bits/2)
     app.style.setProperty("display", "grid")
-    renderMultiplier()
+    
+    sessionStorage.setItem("firstOperand", `${firstOperandExtended}`)
+    sessionStorage.setItem("secondOperand", `${secondOperandExtended}`)
+
+    console.log(type);
+
+    switch(type.value) {
+        case "multiplier":
+            routeMultiplier()
+            break;
+        case "multiplier-optimised":
+            routeMultiplierOptimized
+            break;
+        case "divider":
+            routeDivider()
+            break;
+        case "divider-optimised":
+            routeDividerOptimized()
+            break;
+        default:
+            alert("Please select the type of architecture you want") 
+    }
 })
