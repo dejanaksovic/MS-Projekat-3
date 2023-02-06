@@ -66,7 +66,7 @@ let firstOperandInput = "";
 let secondOperandInput = "";
 
 type.addEventListener("change", e => {
-    additional.style.setProperty("display", "block")
+    additional.style.setProperty("display", "flex")
 
     if(type.value.startsWith("multiplier")) {
         firstLabel.textContent = "Multiplicand"
