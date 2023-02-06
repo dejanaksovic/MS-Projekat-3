@@ -4,6 +4,8 @@ import Product from './components/multiplication/product.js'
 import Control from './components/multiplication/control.js'
 import ALU from './components/multiplication/ALU.js'
 
+import { routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized } from './config/router.js'
+
 //Middleware
 import formater from './middleware/formatMiddleware.js'
 import extender from './middleware/bitBaseExtentionMiddleware.js'
@@ -139,16 +141,16 @@ buttonSubmit.addEventListener("click", e=> {
 
     switch(type.value) {
         case "multiplier":
-            window.location.replace("./pages/multiplier/multiplier.html")
+            routeMultiplier()
             break;
         case "multiplier-optimised":
-            window.location.replace("./pages/multiplier-optimized/multiplierOptimized.html")
+            routeMultiplierOptimized
             break;
         case "divider":
-            window.location.replace("./pages/divider/divider.html")
+            routeDivider()
             break;
         case "divider-optimised":
-            window.location.replace("./pages/divider-optimized/dividerOptimized.html")
+            routeDividerOptimized()
             break;
         default:
             alert("Please select the type of architecture you want") 
