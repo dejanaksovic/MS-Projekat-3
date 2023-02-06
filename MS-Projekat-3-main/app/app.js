@@ -1,8 +1,8 @@
-import Multiplicand from './components/multiplicand.js'
-import Multiplier from './components/multiplier.js'    
-import Product from './components/product.js'
-import Control from './components/control.js'
-import ALU from './components/ALU.js'
+import Multiplicand from './components/multiplication/multiplicand.js'
+import Multiplier from './components/multiplication/multiplier.js'    
+import Product from './components/multiplication/product.js'
+import Control from './components/multiplication/control.js'
+import ALU from './components/multiplication/ALU.js'
 
 //Middleware
 import formater from './middleware/formatMiddleware.js'
