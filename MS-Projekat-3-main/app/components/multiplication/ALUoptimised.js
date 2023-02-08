@@ -1,5 +1,4 @@
 export default function ALUoptimised() {
-    this.body = `<div class="alu"> ALU </div>`
     this.steps = []
     this.currStep = 0
     this.iteration = 0
