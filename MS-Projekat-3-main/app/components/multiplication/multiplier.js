@@ -1,5 +1,5 @@
-export default function Multiplier() {
-    this.body = `<div class='multiplier'>Multiplier ${this.value}</div>`
+export default function Multiplier(viewField, initValue) {
+    this.viewBind = viewField
     this.value = '00001010'
     this.shiftR = () => {
         const carryOut = this.value.slice(-1)
@@ -7,7 +7,14 @@ export default function Multiplier() {
         //return carryOut
     }  
     this.render = () => {
-        this.body = `<div class='multiplier'>Multiplier ${this.value}</div>`
-        return this.body
+        console.log(this.viewBind);
+        this.viewBind.textContent = `${this.value}`
     }
+
+    this.setValue = (value) => {
+        this.value = value
+        this.render()
+    }
+
+    this.setValue(initValue)
 }

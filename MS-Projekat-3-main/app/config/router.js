@@ -15,10 +15,15 @@ const relativeRoute = {
     multiplierOprimized: "/pages/multiplier-optimized/multiplierOptimized.html",
     divider: "/pages/divider/divider.html",
     dividerOptimized: "/pages/divider-optimised/dividerOptimized.html",
+    index: "/index.html"
 }
 
 const Route = (relativePath) => {
     window.location.replace(base+relativePath)
+}
+
+const routeBase = () => {
+    Route(relativeRoute.index)
 }
 
 const routeMultiplier = () => {
@@ -37,4 +42,4 @@ const routeDividerOptimized = () => {
     Route(relativeRoute.dividerOptimized)
 }
 
-export {Route, routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized}
+export {Route, routeBase, routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized}

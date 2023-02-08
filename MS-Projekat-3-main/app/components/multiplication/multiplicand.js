@@ -1,12 +1,19 @@
-export default function Multiplicand () {
-    this.body = `<div class= 'multiplicant'> Multipplicand ${this.value} </div>`
+export default function Multiplicand (viewField, initValue) {
+    this.viewBind = viewField
     this.value = '0000000000110010'
     this.shiftL = () => {
         this.value = this.value.slice(1) + '0'
+        this.render()
     }
 
     this.render = () => {
-        this.body = `<div class = 'multiplicant'> Multipplicand ${this.value} </div>`
-        return this.body
+        this.viewBind.textContent = this.value
     }
+
+    this.setValue = (value) => {
+        this.value = value
+        this.render()
+    }
+
+    this.setValue(initValue)
 }

@@ -1,68 +1,14 @@
-import Multiplicand from './components/multiplication/multiplicand.js'
-import Multiplier from './components/multiplication/multiplier.js'    
-import Product from './components/multiplication/product.js'
-import Control from './components/multiplication/control.js'
-import ALU from './components/multiplication/ALU.js'
-
 import { routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized } from './config/router.js'
 
 //Middleware
-import formater from './middleware/formatMiddleware.js'
 import extender from './middleware/bitBaseExtentionMiddleware.js'
 
 //app
 const app = document.querySelector("#main")
 
-//buttons
-const buttonTest = document.querySelector(".test")
-const buttonUndo = document.querySelector(".undo")
+//form button
 const buttonSubmit = document.querySelector(".form-button")
-
-//Components
-const mulLocal = new Multiplicand()
-const mulpLocal = new Multiplier()
-const product = new Product(8)
-const controlLocal = new Control()
-const formaterLocal = new formater()
-const ALULocal = new ALU()
-
-//Connecting components
-ALULocal.steps.push(mulpLocal.shiftR)
-ALULocal.steps.push(formaterLocal.addBin)
-ALULocal.steps.push(mulLocal.shiftL)
-
-//Multiplier logic
-buttonTest.addEventListener("click", e=> {
-    const test = ALULocal.stepFunc(product.value, mulLocal.value, mulpLocal.value)
     
-    if(test) {console.log(test)
-        product.set(test)
-    }
-    renderMultiplier()
-})
-
-buttonUndo.addEventListener('click', e => {
-    const undoStep = ALULocal.undo()
-    if(undoStep){
-        if(undoStep[0] == 'multiplier'){
-            mulpLocal.value = undoStep[1]
-        }else if(undoStep[0] == 'multiplicand'){
-            mulLocal.value = undoStep[1]
-        }else{
-            product.value = undoStep[1]
-        }
-        console.log(undoStep)
-        renderMultiplier()
-    }
-    
-})
-
-const renderMultiplier = () => {
-    app.innerHTML = mulLocal.render() + mulpLocal.render() + product.render() + controlLocal.body + ALULocal.render()
-}
-
-//Kreiranje aplikacije
-app.style.setProperty("display", "none")
 
 //INPUT SEGMENT
 

@@ -1,5 +1,5 @@
-export default function ProductandMultiplier () {
-    this.body = `<div class= 'prod-mplier'> Product/Multiplier ${this.value} </div>`
+export default function ProductandMultiplier (viewField, initValue) {
+    this.viewBind = viewField
     this.value = '0000000000001010'
     
     this.shiftL = () => {
@@ -12,12 +12,14 @@ export default function ProductandMultiplier () {
         //return carryOut
     } 
 
-    this.set = (value) => {
+    this.setValue = (value) => {
         this.value = value
+        this.render()
     }
 
     this.render = () => {
-        this.body = `<div class = 'prod-mplier'> Product/Multiplier ${this.value} </div>`
-        return this.body
+        this.viewBind.textContent = this.value
     }
+
+    this.setValue(initValue)
 }

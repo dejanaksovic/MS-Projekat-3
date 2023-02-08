@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Multiplieros</title>
 </head>
+
 <body>
-    <h1>Multiplier</h1>
+    <div class="multiplier">
+        <p>Multiplier</p>
+        <div id="multiplier-view-port"></div>
+    </div>
+    <div class="multiplicant">
+        <p>Multiplicant</p>
+        <div id="multiplicant-view-port"></div>
+    </div>
+    <div class="alu">
+        <p>ALU</p>
+        <div id="alu-view-port"></div>
+    </div>
+    <div class="control">
+        <p>Control: </p>
+        <div id="control-view-port"></div>
+    </div>
+    <div class="product">
+        <p>Product</p>
+        <div id="product-view-port"></div>
+    </div>
     <script src="app.js" type="module"></script>
+
+    <button id="do">Step</button>
+    <button id="undo">Undo</button>
 </body>
+
 </html>
