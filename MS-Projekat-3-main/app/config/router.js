@@ -10,6 +10,8 @@ const getBaseUrl = () => {
 
 const base = getBaseUrl()
 
+
+//When adding a new page or any other html file that needs access add it's relative path from app here
 const relativeRoute = {
     multiplier: "/pages/multiplier/multiplier.html",
     multiplierOprimized: "/pages/multiplier-optimized/multiplierOptimized.html",
@@ -42,4 +44,8 @@ const routeDividerOptimized = () => {
     Route(relativeRoute.dividerOptimized)
 }
 
+<<<<<<< HEAD
+export {Route, relativeRoute, routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized}
+=======
 export {Route, routeBase, routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized}
+>>>>>>> f2443e8ff5ba815bdb7637352303bfa1721485e6
