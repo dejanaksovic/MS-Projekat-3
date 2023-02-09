@@ -17,7 +17,7 @@ export default function formatMiddleware() {
     },
 
     this.decToBin= (value) => {
-        return value.toString(2)
+        return parseInt(value).toString(2)
     },
 
     this.decToHex= (value) => {
@@ -28,4 +28,7 @@ export default function formatMiddleware() {
         return this.decToBin(parseInt(this.binToDec(valueFirst))+parseInt(this.binToDec(valueSecond)))
     }
 
+    this.subBinDec = (minuend, subtrahend) => {
+        return parseInt(this.binToDec(minuend) - this.binToDec(subtrahend))
+    }
 }
