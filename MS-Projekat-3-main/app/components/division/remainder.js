@@ -1,13 +1,15 @@
-export default function Remainder () {
-    this.body = `<div class= 'divisor'> Remainder ${this.value} </div>`
-    this.value = '0000000000111100'
+export default function Remainder (viewPort, initialValue) {
+    this.view = viewPort
+    this.value = ''
     
-    this.set = (value) => { 
+    this.setValue = (value) => { 
         this.value = value
+        this.render()
     }
 
     this.render = () => {
-        this.body = `<div class = 'divisor'> Remainder ${this.value} </div>`
-        return this.body
+        this.view.textContent = this.value
     }
+
+    this.setValue(initialValue)
 }

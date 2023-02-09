@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container"">
         <div class="form">
             <form >
                 <div class="form-group">
@@ -25,23 +25,34 @@
 
                 <div class="form-group">
                     <label for="">
-                        16:
+                        16 bit
                         <input type="radio" name="bits" value="16">
                     </label>
-                        32:
+                
                     <label for="">
+                        32 bit
                         <input type="radio" name="bits" value="32">
+                    </label>
+
+                    <label for="">
+                        64 bit
+                        <input type="radio" name="bits" value="64">
+                    </label>
+
+                    <label for="">
+                        128 bit
+                        <input type="radio" name="bits" value="64">
                     </label>
                 </div>
 
                 <div class="custom-dropdown">
                     <div class="form-group">
                         <label for="first-operand">Multiplicant:</label>
-                        <input id="first-operand" type="text">
+                        <input id="first-operand" type="number">
                     </div>
                     <div class="form-group">
                         <label for="second-operand">Multiplier:</label>
-                        <input type="text" id="second-operand">
+                        <input type="number" id="second-operand">
                     </div>
                 </div>
 
@@ -52,6 +63,7 @@
             
         </div>
         <button class="test" defer>TEST</button>
+        <button class="undo" defer>UNDO</button>
     </div>
     <script src="app.js" type="module"></script>
 </body>
