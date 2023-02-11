@@ -44,8 +44,5 @@ const routeDividerOptimized = () => {
     Route(relativeRoute.dividerOptimized)
 }
 
-<<<<<<< HEAD
-export {Route, relativeRoute, routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized}
-=======
+
 export {Route, routeBase, routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized}
->>>>>>> f2443e8ff5ba815bdb7637352303bfa1721485e6
