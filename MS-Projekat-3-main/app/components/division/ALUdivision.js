@@ -13,7 +13,7 @@ export default function ALUdivision() {
     this.carryIn = '0'
     this.stepFunc = (remainder, divisor, quotient) => {
         
-        let returnValue = undefined
+        let returnValue = []
 
         if(this.iteration < quotient.length + 1){
             if(this.currStep == 0){
@@ -21,31 +21,29 @@ export default function ALUdivision() {
                 if(rem < 0){
                     this.carryIn = '0'
                     rem = formater.binToDec(remainder)
-                    console.log("Because the difference between Remainder and Divisor is negative, Remainder stays the same.")
+                    returnValue[1] = "Because the difference between Remainder and Divisor is negative, Remainder stays the same."
                 }else{
                     this.carryIn = '1'
-                    console.log("The Remainder has changed.")
+                    returnValue[1] = "The Remainder has changed."
                 }
-                returnValue = Extender(formater.decToBin(rem), remainder.length)
-                console.log(formater.decToBin(rem));
-                console.log(returnValue);
-                while(returnValue.length < remainder.length){
-                    returnValue = '0' + returnValue
+                returnValue[0] = Extender(formater.decToBin(rem), remainder.length)
+                while(returnValue[0].length < remainder.length){
+                    returnValue[0] = '0' + returnValue[0]
                 }
                 this.undoStack.push(['remainder', remainder])
             }else if(this.currStep == 1){
                 this.steps[this.currStep](this.carryIn)
                 if(this.carryIn == '1'){
-                    console.log("Quotinet shifts to the left, the new bit is '1' because the difference between Remainder and Divisor is a non-negative number.")
+                    returnValue[1] = "Quotinet shifts to the left, the new bit is '1' because the difference between Remainder and Divisor is a non-negative number."
                 }else{
-                    console.log("Quotinet shifts to the left, the new bit is '0' because the difference between Remainder and Divisor is a negative number.")
+                    returnValue[1] = "Quotinet shifts to the left, the new bit is '0' because the difference between Remainder and Divisor is a negative number."
                 }
                 console.log('old quotient', quotient)
                 this.undoStack.push(['quotient', quotient])
             }else if(this.currStep == 2){
                 this.steps[this.currStep]()
                 this.iteration++
-                console.log("Divisor shifts to the right.")
+                returnValue[1] = "Divisor shifts to the right."
                 this.undoStack.push(['divisor', divisor])
             }
             
@@ -56,9 +54,7 @@ export default function ALUdivision() {
         this.currStep++
         this.currStep %= this.steps.length
 
-        if(returnValue !== undefined){
-            return returnValue
-        }
+        return returnValue
     }
     this.undo = () => {
         if (this.undoStack.length != 0) {

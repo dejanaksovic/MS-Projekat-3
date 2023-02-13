@@ -33,16 +33,30 @@ alu.steps.push(divisor.shiftR)
 const doButton = document.querySelector(".do")
 const undoButton = document.querySelector("#undo")
 
+let historyLog = []
+
 doButton.addEventListener("click", e => {
     const testDiv = alu.stepFunc(remainder.value, divisor.value, quotient.value)
-    console.log(testDiv);
-    if(testDiv) {
-        remainder.setValue(testDiv)
+    if(testDiv[0]) {
+        remainder.setValue(testDiv[0])
     }
+    historyLog.push(testDiv[1] + "<br><br><br>")
+    renderHistory()
 })
+
+let t = document.querySelector(".test")
+
+let renderHistory = () => {
+    t.innerHTML = ''
+    historyLog.forEach(log => t.innerHTML += log)
+}
 
 undoButton.addEventListener("click", e => {
         const prevState = alu.undo()
+        if(historyLog.length > 0){
+            historyLog.pop()
+            renderHistory()
+        }
         if(prevState) {
             switch(prevState[0]) {
                 case "quotient":

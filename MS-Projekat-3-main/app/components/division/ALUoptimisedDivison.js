@@ -10,12 +10,12 @@ export default function ALUoptimisedDivision() {
     this.formater = new formatMiddleware()
     this.stepFunc = (remandquot, divisor) => {
         
-        let returnValue = undefined
+        let returnValue = []
 
         if(this.iteration < divisor.length){
             if(this.currStep == 0){
                 this.steps[this.currStep]()
-                console.log("Remainder/Quotient shifts left.")
+                returnValue[1] = "Remainder/Quotient shifts left."
                 this.undoStack.push(['remandquot', remandquot])
             }else{
                 const remainder = remandquot.slice(0, remandquot.length/2)
@@ -24,17 +24,17 @@ export default function ALUoptimisedDivision() {
                 if(rem < 0){
                     this.replaceLSB = '0'
                     rem = this.formater.binToDec(remainder)
-                    console.log("Because the difference between remainder and divisor is negative, Remainder/Quotient stays the same.")
+                    returnValue[1] = "Because the difference between remainder and divisor is negative, Remainder/Quotient stays the same."
                 }else{
                     this.replaceLSB = '1'
-                    console.log("Remainder has changed. The least significant bit of the Quotient is turned into 1.")
+                    returnValue[1] = "Remainder has changed. The least significant bit of the Quotient is turned into 1."
                 }
-                returnValue = this.formater.decToBin(rem)
-                while(returnValue.length < remainder.length){
-                    returnValue = '0' + returnValue
+                returnValue[0] = this.formater.decToBin(rem)
+                while(returnValue[0].length < remainder.length){
+                    returnValue[0] = '0' + returnValue[0]
                 }
-                returnValue = returnValue + quotient
-                returnValue = returnValue.slice(0, -1) + this.replaceLSB
+                returnValue[0] = returnValue[0] + quotient
+                returnValue[0] = returnValue[0].slice(0, -1) + this.replaceLSB
                 this.iteration++
                 this.undoStack.push(['remandquot', remandquot])
             }
