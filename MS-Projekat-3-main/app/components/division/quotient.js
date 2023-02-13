@@ -10,6 +10,7 @@ export default function Quotient (viewPort, initialValue) {
     
     this.shiftL = (carryIn) => {
         this.setValue(this.value.slice(1) + carryIn)
+        return this.value
     }
 
     this.render = () => {
