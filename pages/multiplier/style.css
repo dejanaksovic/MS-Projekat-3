@@ -1,9 +1,10 @@
-body{
+body {
     display: grid;
     justify-content: center;
     background-color: rgb(234, 231, 231);
 }
-.container{
+
+.container {
     background: linear-gradient(110deg, rgb(144, 144, 144) 60%, silver 60%);
     width: 90vw;
     height: 90vh;
@@ -13,17 +14,17 @@ body{
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-    ". . . . . . . "
-    ". multiplicant multiplicant . . . . "
-    ". . down-multiplicant . . . . "
-    ". alu alu  . multiplier multiplier . "
-    ". up-product down-alu . up down . "
-    ". product product left control control . "
-    ". . . . . . . "
-    ".  . undo . step . . "
-    ;
+        ". . . . . . . "
+        ". multiplicant multiplicant . . . . "
+        ". . down-multiplicant . . . . "
+        ". alu alu  . multiplier multiplier . "
+        ". up-product down-alu . up down . "
+        ". product product left control control . "
+        ". . . . . . . "
+        ".  . undo . step . . ";
 }
-.multiplicant{
+
+.multiplicant {
     grid-area: multiplicant;
     background-color: rgb(97, 95, 95);
     display: flex;
@@ -31,39 +32,40 @@ body{
     flex-direction: column;
     color: rgb(0, 0, 0);
 }
-.multiplier{
+
+.multiplier {
     grid-area: multiplier;
     background-color: rgb(97, 95, 95);
     display: flex;
     place-items: center;
     flex-direction: column;
-
 }
-.product{
+
+.product {
     grid-area: product;
     background-color: rgb(97, 95, 95);
     display: flex;
     justify-content: center;
     place-items: center;
     flex-direction: column;
-
 }
-.control{
+
+.control {
     grid-area: control;
-    background-color:rgb(97, 95, 95);
+    background-color: rgb(97, 95, 95);
     display: flex;
     justify-content: center;
     place-items: center;
     align-items: center;
     border-radius: 50%;
     flex-direction: column;
-    
 }
-.alu{
+
+.alu {
     grid-area: alu;
     clip-path: polygon(49% 32%, 60% 0, 100% 0, 78% 100%, 25% 100%, 0 0, 36% 0);
     width: 100%;
-    height: 100%; 
+    height: 100%;
     background-color: rgb(97, 95, 95);
     display: flex;
     justify-content: center;
@@ -71,47 +73,52 @@ body{
     align-items: center;
     margin: 0%;
     padding: 0%;
-    }
+}
 
-#do{
+#do {
     grid-area: step;
     background-color: silver;
     margin: 1rem 0 1rem 0;
     border-radius: 1rem;
 }
-#undo{
+
+#undo {
     grid-area: undo;
     background-color: silver;
     margin: 1rem 0 1rem 0;
     border-radius: 1rem;
 }
-.left-control{
+
+.left-control {
     grid-area: left;
     height: 70%;
     width: 100%;
     margin-top: 12.5px;
 }
-.down-multipiler{
+
+.down-multipiler {
     grid-area: down;
     height: 70%;
     width: 100%;
     margin-top: 12.5px;
 }
 
-.up{
+.up {
     grid-area: up;
     height: 70%;
     width: 100%;
     margin-top: 12.5px;
 }
-.left-alu{
+
+.left-alu {
     grid-area: left;
     height: 70%;
     width: 100%;
     margin-top: -30px;
     margin-left: 10px;
 }
-.left-multiplicant{
+
+.left-multiplicant {
     grid-area: left;
     height: 70%;
     width: 100%;
@@ -119,28 +126,28 @@ body{
     transform: rotate(17deg);
     margin-left: 40px;
 }
-.down-multiplicant{
+
+.down-multiplicant {
     grid-area: down-multiplicant;
     height: 70%;
     width: 100%;
     margin-top: 12.5px;
-    
-    
 }
-.down-alu{
+
+.down-alu {
     grid-area: down-alu;
     height: 70%;
     width: 100%;
     margin-top: 12.5px;
-    
 }
-.up-product{
+
+.up-product {
     grid-area: up-product;
     height: 70%;
     width: 100%;
-    margin-top: 12.5px;   
+    margin-top: 12.5px;
 }
 
-p{
+p {
     font-weight: 900;
 }
