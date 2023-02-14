@@ -1,27 +1,14 @@
-const getBaseUrl = () => {
-    let url = window.location.toString()
-    url = url.split("/")
-    while(url[url.length-1] != "app") {
-        url.pop()
-    }
-
-    return url.join("/")
-}
-
-const base = getBaseUrl()
-
-
 //When adding a new page or any other html file that needs access add it's relative path from app here
 const relativeRoute = {
     multiplier: "/pages/multiplier/multiplier.html",
     multiplierOprimized: "/pages/multiplier-optimized/multiplierOptimized.html",
     divider: "/pages/divider/divider.html",
     dividerOptimized: "/pages/divider-optimised/dividerOptimized.html",
-    index: "/index.html"
+    index: "/"
 }
 
 const Route = (relativePath) => {
-    window.location.replace(base+relativePath)
+    window.location.href = relativePath
 }
 
 const routeBase = () => {
