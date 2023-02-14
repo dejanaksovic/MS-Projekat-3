@@ -1,22 +1,17 @@
-//When adding a new page or any other html file that needs access add it's relative path from app here
-const routes = {
-    index: "/",
-    multiplier: "/pages/multiplier",
-    multiplierOprimized: "/pages/multiplier-optimized",
-    divider: "/pages/divider/divider.html",
-    dividerOptimized: "/pages/divider-optimised",
+const pathToApps = "pages";
+
+function Route(path) {
+    // If path is defined go to "pages/path" else go home
+    window.location.href = path ? `${pathToApps}/${path}` : ""
 }
 
-const Route = (path = "") => {
-    window.location.href = path
-}
-
+// Adding a new route is as simple as adding a new entry in the Router object
 const Router = {
-    home: () => Route(),
-    multiplier: () => Route(routes.multiplier),
-    multiplierOptimized: () => Route(routes.multiplierOprimized),
-    divider: () => Route(routes.divider),
-    dividerOptimized: () => Route(routes.dividerOptimized)
-}
+	home: () => Route(),
+	multiplier: () => Route("multiplier"),
+	multiplierOptimized: () => Route("multiplier-optimized"),
+	divider: () => Route("divider"),
+	dividerOptimized: () => Route("divider-optimised"),
+};
 
-export default Router
+export default Router;
