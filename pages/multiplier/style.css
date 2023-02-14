@@ -3,7 +3,7 @@ body{
     justify-content: center;
     background-color: rgb(234, 231, 231);
 }
-.conteiner{
+.container{
     background: linear-gradient(110deg, rgb(144, 144, 144) 60%, silver 60%);
     width: 90vw;
     height: 90vh;
