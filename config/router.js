@@ -1,5 +1,5 @@
 //When adding a new page or any other html file that needs access add it's relative path from app here
-const relativeRoute = {
+const routes = {
     multiplier: "/pages/multiplier/multiplier.html",
     multiplierOprimized: "/pages/multiplier-optimized/multiplierOptimized.html",
     divider: "/pages/divider/divider.html",
@@ -12,23 +12,23 @@ const Route = (relativePath) => {
 }
 
 const routeBase = () => {
-    Route(relativeRoute.index)
+    Route(routes.index)
 }
 
 const routeMultiplier = () => {
-    Route(relativeRoute.multiplier)
+    Route(routes.multiplier)
 }
 
 const routeMultiplierOptimized = () => {
-    Route(relativeRoute.multiplierOprimized)
+    Route(routes.multiplierOprimized)
 }
 
 const routeDivider = () => {
-    Route(relativeRoute.divider)
+    Route(routes.divider)
 }
 
 const routeDividerOptimized = () => {
-    Route(relativeRoute.dividerOptimized)
+    Route(routes.dividerOptimized)
 }
 
 
