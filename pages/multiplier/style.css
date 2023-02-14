@@ -1,14 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: grid;
     justify-content: center;
     background-color: rgb(234, 231, 231);
+    padding: 0;
+    margin: 0;
+    background-color: lightgray;
 }
 
 .container {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.multiplierContainer {
     background: linear-gradient(110deg, rgb(144, 144, 144) 60%, silver 60%);
-    width: 90vw;
-    height: 90vh;
-    margin: 1%;
+    width: 80%;
+    height: 100%;
     border: solid 1px black;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -150,4 +164,28 @@ body {
 
 p {
     font-weight: 900;
+}
+
+#historyContainer {
+    width: 20%;
+    height: 100%;
+    background-color: rgb(192, 192, 192);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+#historyContainer h3 {
+    text-align: center;
+}
+
+#history {
+    padding: 0 12px 12px 32px;
+    margin: 0;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.historyItem {
+    margin-bottom: 16px;
 }

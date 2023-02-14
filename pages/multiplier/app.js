@@ -42,15 +42,25 @@ buttonStep.addEventListener("click", e  => {
     if(possibleProduct[0] != undefined) {
         product.setValue(BaseExtender(possibleProduct[0], multiplicant.value.length))
     }
-    historyLog.push(possibleProduct[1] + "<br><br><br>")
+    historyLog.push(possibleProduct[1])
     renderHistory()
 })
 
-let t = document.querySelector('.test')
 
 let renderHistory = () => {
-    t.innerHTML = ''
-    historyLog.forEach(log => t.innerHTML += log)
+
+    const history = document.getElementById("history");
+    history.innerHTML = "";
+
+    historyLog.forEach((log) => {
+
+        const liElement = document.createElement("li");
+        liElement.classList.add("historyItem");
+        liElement.innerText = log;
+        history.appendChild(liElement);
+
+        // history.innerHTML += `<li class="historyItem">${log}</li> `
+    })
 }
 
 buttonUndo.addEventListener("click", e => {
