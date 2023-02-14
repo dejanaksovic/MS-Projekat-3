@@ -15,7 +15,7 @@ export default function ALUoptimisedDivision() {
         if(this.iteration < divisor.length){
             if(this.currStep == 0){
                 this.steps[this.currStep]()
-                returnValue[1] = "Remainder/Quotient shifts left."
+                returnValue[1] = "Ostatak/Količnik se pomera levo."
                 this.undoStack.push(['remandquot', remandquot])
             }else{
                 const remainder = remandquot.slice(0, remandquot.length/2)
@@ -24,10 +24,10 @@ export default function ALUoptimisedDivision() {
                 if(rem < 0){
                     this.replaceLSB = '0'
                     rem = this.formater.binToDec(remainder)
-                    returnValue[1] = "Because the difference between remainder and divisor is negative, Remainder/Quotient stays the same."
+                    returnValue[1] = "Jer je razlika ostatka i delioca negativna, Ostatak/Količnik ostaje nepromenjen."
                 }else{
                     this.replaceLSB = '1'
-                    returnValue[1] = "Remainder has changed. The least significant bit of the Quotient is turned into 1."
+                    returnValue[1] = "Ostatak je promenjen na novu vrednost. LSB Količnika je postavljen na 1."
                 }
                 returnValue[0] = this.formater.decToBin(rem)
                 while(returnValue[0].length < remainder.length){

@@ -21,10 +21,10 @@ export default function ALUdivision() {
                 if(rem < 0){
                     this.carryIn = '0'
                     rem = formater.binToDec(remainder)
-                    returnValue[1] = "Because the difference between Remainder and Divisor is negative, Remainder stays the same."
+                    returnValue[1] = "Jer je razlika Ostatka i Delioca negativna, Ostatak ostaje isti."
                 }else{
                     this.carryIn = '1'
-                    returnValue[1] = "The Remainder has changed."
+                    returnValue[1] = "Ostatak se promenio na novu vrednost."
                 }
                 returnValue[0] = Extender(formater.decToBin(rem), remainder.length)
                 while(returnValue[0].length < remainder.length){
@@ -34,16 +34,16 @@ export default function ALUdivision() {
             }else if(this.currStep == 1){
                 this.steps[this.currStep](this.carryIn)
                 if(this.carryIn == '1'){
-                    returnValue[1] = "Quotinet shifts to the left, the new bit is '1' because the difference between Remainder and Divisor is a non-negative number."
+                    returnValue[1] = "Količnik se pomera levo, unešeni bit je '1' jer je razlika Ostatka i Delioca nenegativan broj."
                 }else{
-                    returnValue[1] = "Quotinet shifts to the left, the new bit is '0' because the difference between Remainder and Divisor is a negative number."
+                    returnValue[1] = "Količnik se pomera levo, unešeni bit je '0' jer je razlika Ostatka i Delioca negativan broj."
                 }
                 console.log('old quotient', quotient)
                 this.undoStack.push(['quotient', quotient])
             }else if(this.currStep == 2){
                 this.steps[this.currStep]()
                 this.iteration++
-                returnValue[1] = "Divisor shifts to the right."
+                returnValue[1] = "Delilac se pomera desno."
                 this.undoStack.push(['divisor', divisor])
             }
             
