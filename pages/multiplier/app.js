@@ -2,7 +2,7 @@ import Multiplier from "../../components/multiplication/multiplier.js"
 import Multiplicant from "../../components/multiplication/multiplicand.js"
 import ALU from "../../components/multiplication/ALU.js"
 import Product from "../../components/multiplication/product.js"
-import { routeBase } from "../../config/router.js"
+import Router from "../../config/router.js"
 import Formater from "../../middleware/formatMiddleware.js"
 import BaseExtender from "../../middleware/bitBaseExtentionMiddleware.js"
 
@@ -17,7 +17,7 @@ const baseValues = {
 //Provera inicijalnih vrednost sesije, direktni pristupi
 if (!baseValues.multiplicant || !baseValues.multiplier) {
     alert("initial values haven't been set, please go back and set them")
-    routeBase()
+    Router.home()
 }
 
 
