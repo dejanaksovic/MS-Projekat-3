@@ -38,9 +38,7 @@ export default function ALU() {
             this.currStep++
             this.currStep %= this.steps.length
 
-            if (returnVal !== undefined) {
-                return returnVal
-            }
+            return returnVal
         } else {
             console.log("This computation has concluded kindly sod off")
         }

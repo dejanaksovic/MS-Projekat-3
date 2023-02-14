@@ -37,9 +37,7 @@ export default function ALUoptimised() {
         this.currStep++
         this.currStep %= this.steps.length
 
-        if(returnValue !== undefined){
-            return returnValue
-        }
+        return returnValue
     }
     this.undo = () => {
         if (this.undoStack.length != 0) {
