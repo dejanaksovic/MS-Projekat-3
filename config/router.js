@@ -1,10 +1,10 @@
 //When adding a new page or any other html file that needs access add it's relative path from app here
 const routes = {
     index: "/",
-    multiplier: "/pages/multiplier/multiplier.html",
-    multiplierOprimized: "/pages/multiplier-optimized/multiplierOptimized.html",
+    multiplier: "/pages/multiplier",
+    multiplierOprimized: "/pages/multiplier-optimized",
     divider: "/pages/divider/divider.html",
-    dividerOptimized: "/pages/divider-optimised/dividerOptimized.html",
+    dividerOptimized: "/pages/divider-optimised",
 }
 
 const Route = (path = "") => {
