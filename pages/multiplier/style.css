@@ -59,7 +59,6 @@ body {
     grid-area: product;
     background-color: rgb(97, 95, 95);
     display: flex;
-    justify-content: center;
     place-items: center;
     flex-direction: column;
 }
