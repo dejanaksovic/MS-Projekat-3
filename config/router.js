@@ -2,7 +2,7 @@ const pathToApps = "pages";
 
 function Route(path) {
 	// If path is defined go to "pages/path" else go home
-	window.location.href = path ? `${pathToApps}/${path}` : "";
+	window.location.pathname = path ? `/${pathToApps}/${path}` : "";
 }
 
 // Adding a new route is as simple as adding a new entry in the Router object
