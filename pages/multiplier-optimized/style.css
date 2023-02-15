@@ -31,7 +31,7 @@ body {
         ". . . . . . . "
         ". multiplicant multiplicant . . . . "
         ". . down-multiplicant . . . . "
-        ". alu alu  . multiplier multiplier . "
+        ". alu alu  . . . . "
         ". up-product down-alu . up down . "
         ". product product left control control . "
         ". . . . . . . "
@@ -47,13 +47,7 @@ body {
     color: rgb(0, 0, 0);
 }
 
-.multiplier {
-    grid-area: multiplier;
-    background-color: rgb(97, 95, 95);
-    display: flex;
-    place-items: center;
-    flex-direction: column;
-}
+
 
 .product {
     grid-area: product;
