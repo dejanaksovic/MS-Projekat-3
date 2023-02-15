@@ -6,7 +6,6 @@ import Router from "../../config/router.js"
 import Extender from "../../middleware/bitBaseExtentionMiddleware.js"
 import Formater from "../../middleware/formatMiddleware.js"
 
-console.log("After import");
 
 const initialValues = {
     divident: sessionStorage.getItem("firstOperand"),
