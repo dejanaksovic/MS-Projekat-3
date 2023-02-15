@@ -102,7 +102,10 @@ body {
     margin: 1rem 0 1rem 0;
     border-radius: 1rem;
 }
-
+#do:hover, #undo:hover{
+    background-color: rgb(79, 77, 77);
+    border: 2px solid rgb(0, 0, 0);
+}
 .left-control {
     grid-area: left;
     height: 70%;
@@ -164,6 +167,9 @@ body {
 
 p {
     font-weight: 900;
+}
+#product-view-port, #multiplicant-view-port,  #multiplier-view-port{
+    font-size: 1.3rem;
 }
 
 #historyContainer {
