@@ -2,7 +2,7 @@ import Divisor from "../../components/division/divisor.js"
 import Quotient from "../../components/division/quotient.js"
 import ALU from "../../components/division/ALUdivision.js"
 import Remainder from "../../components/division/remainder.js"
-import {routeBase} from "../../config/router.js"
+import Router from "../../config/router.js"
 import Extender from "../../middleware/bitBaseExtentionMiddleware.js"
 import Formater from "../../middleware/formatMiddleware.js"
 
@@ -15,7 +15,7 @@ const initialValues = {
 
 if(!initialValues.divident  || !initialValues.divisor) {
     alert("initial values have not been set, returning to set form")
-    routeBase()
+    Router.home()
 }
 
 const formater = new Formater()
