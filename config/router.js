@@ -4,7 +4,7 @@ const nameOfRepo = "MS-Projekat-3"
 function Route(path) {
 	// If path is defined go to "pages/path" else go home
 	if(window.location.href.includes("github.io"))
-		window.location.pathname = path ? `/${nameOfRepo}/${pathToApps}/${path}` : "${nameOfRepo}";
+		window.location.pathname = path ? `/${nameOfRepo}/${pathToApps}/${path}` : `${nameOfRepo}`;
 	else
 		window.location.pathname = path ? `/${pathToApps}/${path}` : "";
 }
