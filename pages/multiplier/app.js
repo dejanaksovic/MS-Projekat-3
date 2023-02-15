@@ -45,17 +45,8 @@ buttonStep.addEventListener("click", e  => {
         product.setValue(BaseExtender(possibleProduct[0], multiplicant.value.length))
     }
     historyLog.push(possibleProduct[1])
-    
-    const currentComponent = document.querySelector(`.${alu.undoStack[alu.undoStack.length-1][0]}`)
 
-    //reset all actives
-    //God help us all 
-    //TODO: Pull out of your ass the way to activate control and alu when needed
-    for ( const className of ["multiplier", "multiplicand", "product"] ) {
-        document.querySelector(`.${className}`).classList.remove("active")
-    }
-
-    currentComponent.classList.add("active")
+    setActive()
 
     renderHistory()
 })
@@ -98,6 +89,33 @@ buttonUndo.addEventListener("click", e => {
                 console.log("Someting went oh so terribly wrong....")
         }
     }
+
+    setActive()
 })
 
+const setActive = () => {
+    //Get the name of the current active component
+    const currComponentName = alu.undoStack[alu.undoStack.length-1][0]
 
+    //Get the current active component
+    const currentComponent = document.querySelector(`.${currComponentName}`)
+
+    //reset all actives
+    //God help us all 
+    //TODO: Pull out of your ass the way to activate control and alu when needed
+    for ( const className of ["multiplier", "multiplicand", "product", "alu", "control"] ) {
+        document.querySelector(`.${className}`).classList.remove("active")
+    }
+
+    //Set current component to active
+    currentComponent.classList.add("active")
+
+    //Activation for ALU
+    const test = ["product", "multiplcand"]
+
+    //set control active if needed (multiplier is shifting)
+    currComponentName === "multiplier" ? document.querySelector(".control").classList.add("active") : ""
+
+    //set alu if needed 
+    test.includes(currComponentName) ? document.querySelector(".alu").classList.add("active") : ""
+}
