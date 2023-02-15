@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" type="module" defer></script>
-    <title>Document</title>
+    <title>Multiplieros</title>
 </head>
+
 <body>
-    <h1>Multiplier optimized</h1>
+    <div class="container">
+        <div class="multiplierContainer">
+            <svg version="1.1" class="left-control" id="Layer_1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><g><line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="64" y1="32" x2="1" y2="32"/></g><polyline fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="10,23 1,32 10,41 "/></svg>
+            <svg version="1.1" class="left-alu "id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g id="Layer_1_1_"><polygon points="3,4.414 47.293,48.707 48.707,47.293 4.414,3 14,3 14,1 1,1 1,14 3,14 	"/></g></svg>
+            <svg version="1.1" class="down-multiplicant":xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g id="Layer_1"><polygon points="33.707,39.707 32.293,38.293 26,44.586 26,1 24,1 24,44.586 17.707,38.293 16.293,39.707 25,48.414 "/></g><g></g></svg>
+            <svg version="1.1" class="down-alu":xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g id="Layer_1"><polygon points="33.707,39.707 32.293,38.293 26,44.586 26,1 24,1 24,44.586 17.707,38.293 16.293,39.707 25,48.414 "/></g><g></g></svg>
+            <svg version="1.1" class="up-product" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g id="Layer_1_1_"><polygon points="26,49 26,5.414 32.293,11.707 33.707,10.293 25,1.586 16.293,10.293 17.707,11.707 24,5.414 24,49 	"/></g></svg>
+            <svg version="1.1" class="right-control" id="Layer_1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"><g><line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="64" y1="32" x2="1" y2="32"/></g><polyline fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="10,23 1,32 10,41 "/></svg>
+
+    
+    
+            <div class="multiplicant">
+                <p>MULTIPLICANT</p>
+                <div id="multiplicant-view-port"></div>
+            </div>
+    
+            <div class="alu">
+                <p>ALU</p>
+                <div id="alu-view-port"></div>
+            </div>
+    
+            <div class="control">
+                <p>CONTROL</p>
+                <div id="control-view-port"></div>
+            </div>
+    
+            <div class="product">
+                <p>PRODUCT</p>
+                <div id="product-view-port"></div>
+            </div>
+    
+            <button id="do">STEP</button>
+            <button id="undo">UNDO</button>
+        </div>
+
+        <div id="historyContainer">
+            <h3>History Log</h3>
+            <ol id="history">
+                
+            </ol>
+        </div>
+    </div>
+    
 </body>
+
 </html>
