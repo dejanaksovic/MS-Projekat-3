@@ -1,12 +1,13 @@
 const pathToApps = "pages";
-const nameOfRepo = "MS-Projekat-3"
 
 function Route(path) {
-	// If path is defined go to "pages/path" else go home
+	let pathname = "";
+
 	if(window.location.href.includes("github.io"))
-		window.location.pathname = path ? `/${nameOfRepo}/${pathToApps}/${path}` : `${nameOfRepo}`;
-	else
-		window.location.pathname = path ? `/${pathToApps}/${path}` : "";
+		pathname = window.location.pathname.split("/")[1]
+
+	pathname += path ? `/${pathToApps}/${path}` : "";
+	window.location.pathname = pathname;
 }
 
 // Adding a new route is as simple as adding a new entry in the Router object
