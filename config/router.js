@@ -11,7 +11,7 @@ const Router = {
 	multiplier: () => Route("multiplier"),
 	multiplierOptimized: () => Route("multiplier-optimized"),
 	divider: () => Route("divider"),
-	dividerOptimized: () => Route("divider-optimised"),
+	dividerOptimized: () => Route("divider-optimized"),
 };
 
 export default Router;
