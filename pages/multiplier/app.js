@@ -27,6 +27,8 @@ const multiplicant = new Multiplicant(document.querySelector("#multiplicant-view
 const alu = new ALU()
 const product = new Product(document.querySelector("#product-view-port"), BaseExtender("000", multiplicant.value.length))
 
+const components = [multiplier, multiplicant, alu, product]
+
 alu.steps.push(multiplier.shiftR)
 alu.steps.push(formater.addBin)
 alu.steps.push(multiplicant.shiftL)
@@ -43,6 +45,18 @@ buttonStep.addEventListener("click", e  => {
         product.setValue(BaseExtender(possibleProduct[0], multiplicant.value.length))
     }
     historyLog.push(possibleProduct[1])
+    
+    const currentComponent = document.querySelector(`.${alu.undoStack[alu.undoStack.length-1][0]}`)
+
+    //reset all actives
+    //God help us all 
+    //TODO: Pull out of your ass the way to activate control and alu when needed
+    for ( const className of ["multiplier", "multiplicand", "product"] ) {
+        document.querySelector(`.${className}`).classList.remove("active")
+    }
+
+    currentComponent.classList.add("active")
+
     renderHistory()
 })
 

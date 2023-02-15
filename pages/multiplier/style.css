@@ -38,7 +38,7 @@ body {
         ".  . undo . step . . ";
 }
 
-.multiplicant {
+.multiplicand {
     grid-area: multiplicant;
     background-color: rgb(97, 95, 95);
     display: flex;
@@ -193,4 +193,9 @@ p {
 
 .historyItem {
     margin-bottom: 16px;
+}
+
+.active {
+    position: relative;
+    border: .3rem solid black;
 }
