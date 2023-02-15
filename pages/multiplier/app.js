@@ -100,6 +100,9 @@ const setActive = () => {
     //Get the current active component
     const currentComponent = document.querySelector(`.${currComponentName}`)
 
+    //Activation for ALU
+    const test = ["product", "multiplcand"]
+
     //reset all actives
     //God help us all 
     //TODO: Pull out of your ass the way to activate control and alu when needed
@@ -110,11 +113,15 @@ const setActive = () => {
     //Set current component to active
     currentComponent.classList.add("active")
 
-    //Activation for ALU
-    const test = ["product", "multiplcand"]
+    //set control active if needed (multiplier is shifting) and setting the value of carry out, showing control reposne with value
+    if (currComponentName === "multiplier") {
+        const control = document.querySelector(".control")
 
-    //set control active if needed (multiplier is shifting)
-    currComponentName === "multiplier" ? document.querySelector(".control").classList.add("active") : ""
+        alu.carryOut === '1' ? control.style.setProperty("--clr-primary", "green") : control.style.setProperty("--clr-primary", "red")
+        control.classList.add("active")
+
+        document.querySelector("#control-view-port").textContent = `${alu.carryOut} = 1`
+    }
 
     //set alu if needed 
     test.includes(currComponentName) ? document.querySelector(".alu").classList.add("active") : ""
