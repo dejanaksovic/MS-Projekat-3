@@ -1,11 +1,12 @@
-body{
+body {
     margin: 0;
     padding: 0;
     padding-top: 10rem;
     display: flex;
     justify-content: center;
 }
-#main{
+
+#main {
     flex: 0 0 70%;
     width: 100vw;
     height: 100vh;
@@ -14,46 +15,46 @@ body{
     width: 50vw;
     height: 90vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-    ". . . . . . . "
-    ". multiplicant multiplicant . . . . "
-    ". . . . . . . "
-    ". alu alu  . multiplier multiplier . "
-    ". . . . . . . "
-    ". product product . control control . "
-    ". . . . . . . "
-    ;
+        ". . . . . . . "
+        ". multiplicant multiplicant . . . . "
+        ". . . . . . . "
+        ". alu alu  . multiplier multiplier . "
+        ". . . . . . . "
+        ". product product . control control . "
+        ". . . . . . . ";
 }
-.multiplicant{
+
+.multiplicant {
     grid-area: multiplicant;
     border: 1px solid red;
     display: flex;
     justify-content: center;
     place-items: center;
     align-items: center;
-    
 }
-.multiplier{
+
+.multiplier {
     grid-area: multiplier;
     border: 1px solid red;
     display: flex;
     justify-content: center;
     place-items: center;
     align-items: center;
-
 }
-.product{
+
+.product {
     grid-area: product;
     border: 1px solid red;
     display: flex;
     justify-content: center;
     place-items: center;
     align-items: center;
-
 }
-.control{
+
+.control {
     grid-area: control;
     border: 1px solid red;
     display: flex;
@@ -61,13 +62,13 @@ body{
     place-items: center;
     align-items: center;
     border-radius: 50%;
-    
 }
-.alu{
+
+.alu {
     grid-area: alu;
     clip-path: polygon(49% 32%, 60% 0, 100% 0, 78% 100%, 25% 100%, 0 0, 36% 0);
     width: 100%;
-    height: 100%; 
+    height: 100%;
     background-color: aqua;
     display: flex;
     justify-content: center;
@@ -76,34 +77,39 @@ body{
     margin: 0%;
     padding: 0%;
 }
-.container{
+
+.container {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-form{
+
+form {
     display: flex;
     flex-direction: column;
     gap: 5rem;
     border: 1px solid black;
     padding: 10rem;
     background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
-
 }
-.form-group{
-    display:flex ;
+
+.form-group {
+    display: flex;
     gap: 2rem;
     font-size: 1.8rem;
 }
-.custom-dropdown{
+
+.custom-dropdown {
     display: flex;
     gap: 2rem;
 }
-.form-button{
-    padding: .5rem;
+
+.form-button {
+    padding: 0.5rem;
 }
-.input{
+
+.input {
     font-size: 1rem;
 }

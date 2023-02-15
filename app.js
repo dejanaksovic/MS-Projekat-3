@@ -1,4 +1,4 @@
-import { routeMultiplier, routeMultiplierOptimized, routeDivider, routeDividerOptimized } from './config/router.js'
+import Router from './config/router.js'
 import Formater from "./middleware/formatMiddleware.js"
 
 const formater = new Formater()
@@ -99,16 +99,16 @@ buttonSubmit.addEventListener("click", e=> {
 
     switch(type.value) {
         case "multiplier":
-            routeMultiplier()
+            Router.multiplier()
             break;
         case "multiplier-optimised":
-            routeMultiplierOptimized
+            Router.multiplierOptimized()
             break;
         case "divider":
-            routeDivider()
+            Router.divider()
             break;
         case "divider-optimised":
-            routeDividerOptimized()
+            Router.dividerOptimized()
             break;
         default:
             alert("Please select the type of architecture you want") 

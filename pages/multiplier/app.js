@@ -2,7 +2,7 @@ import Multiplier from "../../components/multiplication/multiplier.js"
 import Multiplicant from "../../components/multiplication/multiplicand.js"
 import ALU from "../../components/multiplication/ALU.js"
 import Product from "../../components/multiplication/product.js"
-import { routeBase } from "../../config/router.js"
+import Router from "../../config/router.js"
 import Formater from "../../middleware/formatMiddleware.js"
 import BaseExtender from "../../middleware/bitBaseExtentionMiddleware.js"
 
@@ -17,7 +17,7 @@ const baseValues = {
 //Provera inicijalnih vrednost sesije, direktni pristupi
 if (!baseValues.multiplicant || !baseValues.multiplier) {
     alert("initial values haven't been set, please go back and set them")
-    routeBase()
+    Router.home()
 }
 
 
@@ -35,20 +35,40 @@ alu.steps.push(multiplicant.shiftL)
 const buttonStep = document.querySelector("#do")
 const buttonUndo = document.querySelector("#undo")
 
-console.log("after formater");
+let historyLog = []
 
 buttonStep.addEventListener("click", e  => {
     const possibleProduct = alu.stepFunc(product.value, multiplicant.value, multiplier.value)
-    console.log(multiplicant.value.length)
-    console.log(multiplier.value.length)
-    console.log(possibleProduct);
-    if(possibleProduct) {
-        product.setValue(BaseExtender(possibleProduct, multiplicant.value.length))
+    if(possibleProduct[0] != undefined) {
+        product.setValue(BaseExtender(possibleProduct[0], multiplicant.value.length))
     }
+    historyLog.push(possibleProduct[1])
+    renderHistory()
 })
+
+
+let renderHistory = () => {
+
+    const history = document.getElementById("history");
+    history.innerHTML = "";
+
+    historyLog.forEach((log) => {
+
+        const liElement = document.createElement("li");
+        liElement.classList.add("historyItem");
+        liElement.innerText = log;
+        history.appendChild(liElement);
+
+        // history.innerHTML += `<li class="historyItem">${log}</li> `
+    })
+}
 
 buttonUndo.addEventListener("click", e => {
     const prevState = alu.undo()
+    if(historyLog.length > 0){
+        historyLog.pop()
+        renderHistory()
+    }
     if(prevState) {
         switch(prevState[0]) {
             case "multiplicand":

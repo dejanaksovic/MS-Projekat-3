@@ -7,7 +7,7 @@ export default function ALU() {
 
     this.stepFunc = (product, multiplicand, multiplier) => {
         if (this.iteration < multiplicand.length / 2) {
-            let returnVal = undefined
+            let returnVal = []
 
             if (this.currStep != 1) {
                 if (this.currStep == 0) {
@@ -24,23 +24,21 @@ export default function ALU() {
             }
 
             if (this.currStep == 1 && this.carryOut == '1') {
-                returnVal = this.steps[this.currStep](product, multiplicand)
-                console.log("Added multiplicand to product", this.undoStack[this.undoStack.length - 1][1])
+                returnVal[0] = this.steps[this.currStep](product, multiplicand)
+                returnVal[1] = "Množenik je dodat na Proizvod", this.undoStack[this.undoStack.length - 1][1]
             } else if (this.currStep == 1 && this.carryOut == '0') {
-                console.log("Multiplicand and product addition failed because of the multiplier carryout bit being 1")
+                returnVal[1] = "Sabiranje Množenika i Proizvoda nije omogućeno jer je izneti bit Množitelja '0'."
             } else if (this.currStep == 0) {
                 this.iteration++
-                console.log("Shitfed multiplier to the right", this.undoStack[this.undoStack.length - 1][1])
+                returnVal[1] = "Množitelj je pomeren u desno.", this.undoStack[this.undoStack.length - 1][1]
             } else {
-                console.log("Shifted multiplicand to the left", this.undoStack[this.undoStack.length - 1][1])
+                returnVal[1] = "Shifted multiplicand to the left", this.undoStack[this.undoStack.length - 1][1]
             }
 
             this.currStep++
             this.currStep %= this.steps.length
 
-            if (returnVal !== undefined) {
-                return returnVal
-            }
+            return returnVal
         } else {
             console.log("This computation has concluded kindly sod off")
         }
