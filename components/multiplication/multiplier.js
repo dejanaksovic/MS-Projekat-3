@@ -8,7 +8,6 @@ export default function Multiplier(viewField, initValue) {
         //return carryOut
     }  
     this.render = () => {
-        console.log(this.viewBind);
         this.viewBind.innerText = `${this.value}`
     }
 

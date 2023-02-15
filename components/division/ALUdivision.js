@@ -21,10 +21,10 @@ export default function ALUdivision() {
                 if(rem < 0){
                     this.carryIn = '0'
                     rem = formater.binToDec(remainder)
-                    returnValue[1] = "Jer je razlika Ostatka i Delioca negativna, Ostatak ostaje isti."
+                    returnValue[1] = this.iteration + ":" + this.currStep + " Jer je razlika Ostatka i Delioca negativna, Ostatak ostaje isti."
                 }else{
                     this.carryIn = '1'
-                    returnValue[1] = "Ostatak se promenio na novu vrednost."
+                    returnValue[1] = this.iteration + ":" + this.currStep + " Ostatak se promenio na novu vrednost."
                 }
                 returnValue[0] = Extender(formater.decToBin(rem), remainder.length)
                 while(returnValue[0].length < remainder.length){
@@ -34,26 +34,26 @@ export default function ALUdivision() {
             }else if(this.currStep == 1){
                 this.steps[this.currStep](this.carryIn)
                 if(this.carryIn == '1'){
-                    returnValue[1] = "Količnik se pomera levo, unešeni bit je '1' jer je razlika Ostatka i Delioca nenegativan broj."
+                    returnValue[1] = this.iteration + ":" + this.currStep + " Količnik se pomera levo, unešeni bit je '1' jer je razlika Ostatka i Delioca nenegativan broj."
                 }else{
-                    returnValue[1] = "Količnik se pomera levo, unešeni bit je '0' jer je razlika Ostatka i Delioca negativan broj."
+                    returnValue[1] = this.iteration + ":" + this.currStep + " Količnik se pomera levo, unešeni bit je '0' jer je razlika Ostatka i Delioca negativan broj."
                 }
-                console.log('old quotient', quotient)
                 this.undoStack.push(['quotient', quotient])
             }else if(this.currStep == 2){
+                returnValue[1] = this.iteration + ":" + this.currStep + " Delilac se pomera desno."
                 this.steps[this.currStep]()
                 this.iteration++
-                returnValue[1] = "Delilac se pomera desno."
+                
                 this.undoStack.push(['divisor', divisor])
             }
             
+            this.currStep++
+            this.currStep %= this.steps.length
+
         }else{
             console.log("This computation has concluded kindly sod off")
         }
         
-        this.currStep++
-        this.currStep %= this.steps.length
-
         return returnValue
     }
     this.undo = () => {
@@ -64,6 +64,7 @@ export default function ALUdivision() {
             } else {
                 this.currStep--
             }
+
             return this.undoStack.pop()
         } else {
             console.log("You have undone all your vile work")
