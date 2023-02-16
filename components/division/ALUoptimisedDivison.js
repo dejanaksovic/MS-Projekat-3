@@ -15,7 +15,7 @@ export default function ALUoptimisedDivision() {
         if(this.iteration < divisor.length){
             if(this.currStep == 0){
                 this.steps[this.currStep]()
-                returnValue[1] = "Remainder/Quotient se pomera levo."
+                returnValue[1] = (this.iteration + 1) + ":" + (this.currStep + 1) + " Remainder/Quotient se pomera levo."
                 this.undoStack.push(['remandquot', remandquot])
             }else{
                 const remainder = remandquot.slice(0, remandquot.length/2)
@@ -24,10 +24,10 @@ export default function ALUoptimisedDivision() {
                 if(rem < 0){
                     this.replaceLSB = '0'
                     rem = this.formater.binToDec(remainder)
-                    returnValue[1] = "Jer je razlika Remainder i Divisor komponente negativna, Remainder/Quotient ostaje nepromenjen."
+                    returnValue[1] = (this.iteration + 1) + ":" + (this.currStep + 1) + " Jer je razlika Remainder i Divisor komponente negativna, Remainder/Quotient ostaje nepromenjen."
                 }else{
                     this.replaceLSB = '1'
-                    returnValue[1] = "Remainder je promenjen na novu vrednost. LSB Količnika je postavljen na 1."
+                    returnValue[1] = (this.iteration + 1) + ":" + (this.currStep + 1) + " Remainder je promenjen na novu vrednost. LSB Količnika je postavljen na 1."
                 }
                 returnValue[0] = this.formater.decToBin(rem)
                 while(returnValue[0].length < remainder.length){
