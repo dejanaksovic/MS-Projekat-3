@@ -108,6 +108,7 @@ const animate = () => {
         component.classList.remove("active")
     }
     aluC.style.setProperty("border", "none")
+    controlC.style.setProperty("border", "none")
     
     //GET THE LAST COMPONENT TROUGH UNDOSTACK
     const componentName = alu.undoStack[alu.undoStack.length-1][0]
