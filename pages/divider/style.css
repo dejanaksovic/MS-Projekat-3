@@ -194,3 +194,9 @@ p {
 .historyItem {
     margin-bottom: 16px;
 }
+
+.active {
+    --animation-primary: white;
+    box-shadow: 0 0 1rem var(--animation-primary)
+    
+}

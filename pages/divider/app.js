@@ -20,10 +20,20 @@ if(!initialValues.divident  || !initialValues.divisor) {
 
 const formater = new Formater()
 
+//LOGICAL COMPONENTS
 const divisor = new Divisor(document.querySelector("#divisor-view-port"), `${initialValues.divisor}${Extender("0", initialValues.divisor.length)}`)
 const quotient = new Quotient(document.querySelector("#quotient-view-port"), Extender("0", initialValues.divisor.length))
 const remainder = new Remainder(document.querySelector("#remainder-view-port"), `${initialValues.divident}`)
 const alu = new ALU()
+
+//DOM COMPONENTS
+const divisorC = document.querySelector(".divisor")
+const quotientC = document.querySelector(".quotient")
+const remainderC = document.querySelector(".remainder")
+const aluC = document.querySelector(".alu")
+const controlC = document.querySelector(".control")
+
+const components = [divisorC, quotientC, remainderC, aluC]
 
 console.log(initialValues.divident)
 
@@ -46,6 +56,9 @@ doButton.addEventListener("click", e => {
         historyLog.push(testDiv[1])
         renderHistory()
     }
+
+    animate()
+    
 })
 
 let renderHistory = () => {
@@ -66,10 +79,12 @@ let renderHistory = () => {
 
 undoButton.addEventListener("click", e => {
         const prevState = alu.undo()
+        
         if(historyLog.length > 0){
             historyLog.pop()
             renderHistory()
         }
+
         if(prevState) {
             switch(prevState[0]) {
                 case "quotient":
@@ -84,6 +99,44 @@ undoButton.addEventListener("click", e => {
                 default:
                     console.log("Someting went oh so terribly wrong....")
             }
+
+            animate()
         }
 })
 
+const animate = () => {
+    //RESET ALL ANIMATION ON COMPONENTS 
+    for (const component of components) {
+        component.classList.remove("active")
+    }
+    aluC.style.setProperty("border", "none")
+    
+    //GET THE LAST COMPONENT TROUGH UNDOSTACK
+    const componentName = alu.undoStack[alu.undoStack.length-1][0]
+
+    //GET THE DOM COMPONENT WITH THAT NAME AND ACTIVATE IT
+    document.querySelector(`.${componentName}`).classList.add("active")
+
+    //CHANGE THE VISUAL VALUE FOR CARRY IN WHEN REMAINDER SHIFTS
+    if (componentName === "quotient") {
+        controlC.classList.remove("active")
+        //REPRESENT CHECKS FOR CONTROL AND SET ANIMATION COLOR TO: GREEN -> GOES TROUGH; RED -> DOENST GO TROUGH
+        document.querySelector("#control-view-port").textContent = ""
+        alu.carryIn === "1" ? controlC.style.setProperty("--animation-primary", "green") : controlC.style.setProperty("--animation-primary", "red")
+
+        //Lights out then on, to represent the change of control values
+        let a = setInterval( () => {
+        document.querySelector("#control-view-port").textContent = `1 = ${alu.carryIn}`
+        controlC.classList.add("active")
+        clearInterval(a)
+        }
+        , 200)
+
+    }
+
+    //ACTIVATE ALU WHEN SUBTRACTION DOES THE THING AS WELL AS DIVISOR
+    if (componentName === "remainder") {
+        aluC.style.setProperty("border", ".2rem solid white")
+        divisorC.classList.add("active")
+    }
+}

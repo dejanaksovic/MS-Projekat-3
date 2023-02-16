@@ -55,29 +55,7 @@ buttonStep.addEventListener("click", e  => {
         renderHistory()
     }
 
-    //RESET ALL COMPONENTS 
-    for(const component of components) {
-        component.classList.remove("active")
-        ALUC.style.setProperty("border", "none")
-    }
-
-    //POSLEDNJA KOMPONENTA NA KOJOJ JE IZVRSENA KOMPUTACIJA IZ ALU STACKA SE UZIMA I STAVLJA SE DA JE ACTIVE
-    const componentName = alu.undoStack[alu.undoStack.length-1][0]
-    document.querySelector(`.${componentName}`).classList.add("active")
-    console.log(componentName, document.querySelector(`.${componentName}`));
-
-    //CPROVERA ZA CONTROL, UKOLIKO JE POSLEDNJA KOMPONENTA MULTIPLIER, PROMENA CARRY OUT-A
-    if (componentName === "multiplier") {
-        document.querySelector("#control-view-port").textContent = `1 = ${alu.carryOut}`
-        //AKO JE SABIRANJE DOZVOLJENO ZELENI GLOW, A AKO NIJE CRVENI
-        alu.carryOut === "0" ? controlC.style.setProperty("--animation-primary", "red") : controlC.style.setProperty("--animation-primary", "green")
-    }
-
-    //PROVERA ZA ALU, UKOLIKO JE CARRY OUT 1 I UKOLIKO JE NA RED PRODUCT
-    if (alu.carryOut === "1" && componentName === "multiplicand") {
-        console.log("ALU ACTIVATED");
-        ALUC.style.setProperty("border", ".2rem solid white")
-    }
+    animate()
 })
 
 
@@ -117,5 +95,32 @@ buttonUndo.addEventListener("click", e => {
             default:
                 console.log("Someting went oh so terribly wrong....")
         }
+        animate()
     }
 })
+
+const animate = () => {
+    //RESET ALL COMPONENTS 
+    for(const component of components) {
+        component.classList.remove("active")
+        ALUC.style.setProperty("border", "none")
+    }
+
+    //POSLEDNJA KOMPONENTA NA KOJOJ JE IZVRSENA KOMPUTACIJA IZ ALU STACKA SE UZIMA I STAVLJA SE DA JE ACTIVE
+    const componentName = alu.undoStack[alu.undoStack.length-1][0]
+    document.querySelector(`.${componentName}`).classList.add("active")
+    console.log(componentName, document.querySelector(`.${componentName}`));
+
+    //CPROVERA ZA CONTROL, UKOLIKO JE POSLEDNJA KOMPONENTA MULTIPLIER, PROMENA CARRY OUT-A
+    if (componentName === "multiplier") {
+        document.querySelector("#control-view-port").textContent = `1 = ${alu.carryOut}`
+        //AKO JE SABIRANJE DOZVOLJENO ZELENI GLOW, A AKO NIJE CRVENI
+        alu.carryOut === "0" ? controlC.style.setProperty("--animation-primary", "red") : controlC.style.setProperty("--animation-primary", "green")
+    }
+
+    //PROVERA ZA ALU, UKOLIKO JE CARRY OUT 1 I UKOLIKO JE NA RED PRODUCT
+    if (alu.carryOut === "1" && componentName === "multiplicand") {
+        console.log("ALU ACTIVATED");
+        ALUC.style.setProperty("border", ".2rem solid white")
+    }
+}
