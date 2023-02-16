@@ -19,15 +19,15 @@ export default function ALUoptimised() {
                     returnValue[0] = '0' + returnValue[0]
                 }
                 returnValue[0] = returnValue[0] + multiplier
-                returnValue[1] = this.iteration + ":" + this.currStep + " Multiplicand dodat na prvu polovinu Product/Multiplier komponente", returnValue[0]
+                returnValue[1] = (this.iteration + 1) + ":" + (this.currStep + 1) + " Multiplicand dodat na prvu polovinu Product/Multiplier komponente", returnValue[0]
                 this.undoStack.push(['productandmultiplier', productandmultiplier])
             }else if(this.currStep == 1){
                 this.steps[this.currStep]()
-                returnValue[1] = this.iteration + ":" + this.currStep + " Product/Multiplier komponenta se pomera desno"
+                returnValue[1] = (this.iteration + 1) + ":" + (this.currStep + 1) + " Product/Multiplier komponenta se pomera desno"
                 this.iteration++
                 this.undoStack.push(['productandmultiplier', productandmultiplier])
             }else{
-                returnValue[1] = this.iteration + ":" + this.currStep + " Jer je LSB Product/Multiplier komponente '0' sabiranje se neće izvršiti."
+                returnValue[1] = (this.iteration + 1) + ":" + (this.currStep + 1) + " Jer je LSB Product/Multiplier komponente '0' sabiranje se neće izvršiti."
                 this.undoStack.push(['productandmultiplier', productandmultiplier])
             }
             
