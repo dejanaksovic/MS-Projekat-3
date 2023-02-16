@@ -197,6 +197,5 @@ p {
 
 .active {
     --animation-primary: white;
-    box-shadow: 0 0 1rem var(--animation-primary)
-    
+    box-shadow: 0 0 2rem var(--animation-primary)
 }

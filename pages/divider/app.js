@@ -117,19 +117,13 @@ const animate = () => {
 
     //CHANGE THE VISUAL VALUE FOR CARRY IN WHEN REMAINDER SHIFTS
     if (componentName === "quotient") {
-        controlC.classList.remove("active")
         //REPRESENT CHECKS FOR CONTROL AND SET ANIMATION COLOR TO: GREEN -> GOES TROUGH; RED -> DOENST GO TROUGH
-        document.querySelector("#control-view-port").textContent = ""
+
         alu.carryIn === "1" ? controlC.style.setProperty("--animation-primary", "green") : controlC.style.setProperty("--animation-primary", "red")
 
-        //Lights out then on, to represent the change of control values
-        let a = setInterval( () => {
         document.querySelector("#control-view-port").textContent = `1 = ${alu.carryIn}`
-        controlC.classList.add("active")
-        clearInterval(a)
-        }
-        , 200)
-
+        controlC.style.setProperty("border", ".2rem solid var(--animation-primary)")
+        console.log(aluC.classList);
     }
 
     //ACTIVATE ALU WHEN SUBTRACTION DOES THE THING AS WELL AS DIVISOR
