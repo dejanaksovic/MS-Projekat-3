@@ -19,33 +19,37 @@ export default function ALUoptimised() {
                     returnValue[0] = '0' + returnValue[0]
                 }
                 returnValue[0] = returnValue[0] + multiplier
-                returnValue[1] = "Added to product", returnValue[0]
+                returnValue[1] = this.iteration + ":" + this.currStep + " Multiplicand dodat na prvu polovinu Product/Multiplier komponente", returnValue[0]
                 this.undoStack.push(['productandmultiplier', productandmultiplier])
             }else if(this.currStep == 1){
                 this.steps[this.currStep]()
-                returnValue[1] = "Multiplier shift right"
+                returnValue[1] = this.iteration + ":" + this.currStep + " Product/Multiplier komponenta se pomera desno"
                 this.iteration++
                 this.undoStack.push(['productandmultiplier', productandmultiplier])
             }else{
-                returnValue[1] = "Because LSB of prod/mul is 0 addition will not happen"
+                returnValue[1] = this.iteration + ":" + this.currStep + " Jer je LSB Product/Multiplier komponente '0' sabiranje se neće izvršiti."
+                this.undoStack.push(['productandmultiplier', productandmultiplier])
             }
+            
+            this.currStep++
+            this.currStep %= this.steps.length
+
         }else{
-            returnValue[1] = "This computation has concluded kindly sod off"
+            console.log("This computation has concluded kindly sod off")
         }
         
-
-        this.currStep++
-        this.currStep %= this.steps.length
-
         return returnValue
     }
     this.undo = () => {
         if (this.undoStack.length != 0) {
-            if (this.currStep == 0) {
+            if(this.currStep == 0){
                 this.iteration--
+            }
+
+            this.currStep--
+
+            if (this.currStep < 0){
                 this.currStep = 1
-            } else {
-                this.currStep--
             }
             return this.undoStack.pop()
         } else {

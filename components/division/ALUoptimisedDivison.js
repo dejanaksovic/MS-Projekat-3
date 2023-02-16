@@ -37,23 +37,26 @@ export default function ALUoptimisedDivision() {
                 returnValue[0] = returnValue[0].slice(0, -1) + this.replaceLSB
                 this.iteration++
                 this.undoStack.push(['remandquot', remandquot])
+        
+                this.currStep++
+                this.currStep %= this.steps.length
             }
         }else{
             console.log("This computation has concluded kindly sod off.")
         }
-        
-        this.currStep++
-        this.currStep %= this.steps.length
 
         return returnValue
     }
     this.undo = () => {
         if (this.undoStack.length != 0) {
-            if (this.currStep == 0) {
+            if(this.currStep == 0){
                 this.iteration--
+            }
+
+            this.currStep--
+
+            if (this.currStep < 0){
                 this.currStep = 1
-            } else {
-                this.currStep--
             }
             return this.undoStack.pop()
         } else {

@@ -22,15 +22,17 @@ const formater = new Formater()
 
 const divisor = new Divisor(document.querySelector("#divisor-view-port"), `${initialValues.divisor}${Extender("0", initialValues.divisor.length)}`)
 const quotient = new Quotient(document.querySelector("#quotient-view-port"), Extender("0", initialValues.divisor.length))
-const remainder = new Remainder(document.querySelector("#remainder-view-port"), `${Extender("0", initialValues.divisor.length)}${initialValues.divident}`)
+const remainder = new Remainder(document.querySelector("#remainder-view-port"), `${initialValues.divident}`)
 const alu = new ALU()
+
+console.log(initialValues.divident)
 
 alu.steps.push(formater.subBinDec)
 alu.steps.push(quotient.shiftL)
 alu.steps.push(divisor.shiftR)
 
 //buttons
-const doButton = document.querySelector(".do")
+const doButton = document.querySelector("#do")
 const undoButton = document.querySelector("#undo")
 
 let historyLog = []
@@ -40,15 +42,26 @@ doButton.addEventListener("click", e => {
     if(testDiv[0]) {
         remainder.setValue(testDiv[0])
     }
-    historyLog.push(testDiv[1] + "<br><br><br>")
-    renderHistory()
+    if(testDiv[1] != undefined){
+        historyLog.push(testDiv[1])
+        renderHistory()
+    }
 })
 
-let t = document.querySelector(".test")
-
 let renderHistory = () => {
-    t.innerHTML = ''
-    historyLog.forEach(log => t.innerHTML += log)
+
+    const history = document.getElementById("history");
+    history.innerHTML = "";
+
+    historyLog.forEach((log) => {
+
+        const liElement = document.createElement("li");
+        liElement.classList.add("historyItem");
+        liElement.innerText = log;
+        history.appendChild(liElement);
+
+        // history.innerHTML += `<li class="historyItem">${log}</li> `
+    })
 }
 
 undoButton.addEventListener("click", e => {

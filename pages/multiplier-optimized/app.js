@@ -1,10 +1,10 @@
 
-import Multiplicant from "../../components/multiplication/multiplicand.js"
-import ALU from "../../components/multiplication/ALU.js"
-import Product from "../../components/multiplication/product.js"
+import Multiplicant from "../../components/multiplication/multiplicandOptimised.js"
+import Product from "../../components/multiplication/product-multiplier.js"
 import Router from "../../config/router.js"
 import Formater from "../../middleware/formatMiddleware.js"
 import BaseExtender from "../../middleware/bitBaseExtentionMiddleware.js"
+import ALUoptimised from "../../components/multiplication/ALUoptimised.js"
 
 
 const formater = new Formater()
@@ -20,15 +20,14 @@ if (!baseValues.multiplicant || !baseValues.multiplier) {
     Router.home()
 }
 
-
 //COMPONENTS
-const multiplicant = new Multiplicant(document.querySelector("#multiplicant-view-port"), baseValues.multiplicant)
-const alu = new ALU()
-const product = new Product(document.querySelector("#product-view-port"), BaseExtender("000", multiplicant.value.length))
+const multiplicant = new Multiplicant(document.querySelector("#multiplicant-view-port"), baseValues.multiplicant.slice(baseValues.multiplicant.length/2))
+const alu = new ALUoptimised()
+const product = new Product(document.querySelector("#product-view-port"), BaseExtender(baseValues.multiplier, baseValues.multiplicant.length))
 
 
 alu.steps.push(formater.addBin)
-alu.steps.push(multiplicant.shiftL)
+alu.steps.push(product.shiftR)
 
 //buttons
 const buttonStep = document.querySelector("#do")
@@ -39,10 +38,12 @@ let historyLog = []
 buttonStep.addEventListener("click", e  => {
     const possibleProduct = alu.stepFunc(product.value, multiplicant.value)
     if(possibleProduct[0] != undefined) {
-        product.setValue(BaseExtender(possibleProduct[0], multiplicant.value.length))
+        product.setValue(possibleProduct[0])
     }
-    historyLog.push(possibleProduct[1])
-    renderHistory()
+    if(possibleProduct[1] != undefined){
+        historyLog.push(possibleProduct[1])
+        renderHistory()
+    }
 })
 
 
@@ -70,13 +71,7 @@ buttonUndo.addEventListener("click", e => {
     }
     if(prevState) {
         switch(prevState[0]) {
-            case "multiplicand":
-                multiplicant.setValue(prevState[1])
-                break;
-            case "multiplier":
-                multiplier.setValue(prevState[1])
-                break;
-            case "product":
+            case "productandmultiplier":
                 product.setValue(prevState[1])
                 break;
             default:

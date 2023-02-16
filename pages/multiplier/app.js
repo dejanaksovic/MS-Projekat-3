@@ -40,10 +40,12 @@ let historyLog = []
 buttonStep.addEventListener("click", e  => {
     const possibleProduct = alu.stepFunc(product.value, multiplicant.value, multiplier.value)
     if(possibleProduct[0] != undefined) {
-        product.setValue(BaseExtender(possibleProduct[0], multiplicant.value.length))
+        product.setValue(possibleProduct[0])
     }
-    historyLog.push(possibleProduct[1])
-    renderHistory()
+    if(possibleProduct[1]){
+        historyLog.push(possibleProduct[1])
+        renderHistory()
+    }
 })
 
 
@@ -57,9 +59,9 @@ let renderHistory = () => {
         const liElement = document.createElement("li");
         liElement.classList.add("historyItem");
         liElement.innerText = log;
+        console.log(log)
         history.appendChild(liElement);
 
-        // history.innerHTML += `<li class="historyItem">${log}</li> `
     })
 }
 
