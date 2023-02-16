@@ -11,11 +11,11 @@ export default function ALU() {
         if (this.iteration < multiplier.length) {
             if (this.currStep != 1) {
                 if (this.currStep == 0) {
-                    returnVal[1] = "Multiplier pomeren u desno."
+                    returnVal[1] = this.iteration + ":" + this.currStep + " Multiplier pomeren u desno."
                     this.undoStack.push(['multiplier', multiplier])
                 } else {
+                    returnVal[1] = this.iteration + ":" + this.currStep + " Multiplicand pomeren u levo."
                     this.iteration++
-                    returnVal[1] = "Multiplicand pomeren u levo."
                     this.undoStack.push(['multiplicand', multiplicand])
                 }
                 this.steps[this.currStep]()
@@ -31,9 +31,9 @@ export default function ALU() {
                 while(returnVal[0].length != multiplicand.length){
                     returnVal[0] = '0' + returnVal[0]
                 }
-                returnVal[1] = "Multiplicand je dodat na Product."
+                returnVal[1] = this.iteration + ":" + this.currStep + " Multiplicand je dodat na Product."
             } else if (this.currStep == 1 && this.carryOut == '0') {
-                returnVal[1] = "Sabiranje Multiplicand i Product komponenti nije omogućeno jer je izneti bit Multiplier komponente '0'."
+                returnVal[1] = this.iteration + ":" + this.currStep + " Sabiranje Multiplicand i Product komponenti nije omogućeno jer je izneti bit Multiplier komponente '0'."
             }
 
             this.currStep++
