@@ -59,8 +59,6 @@ let renderHistory = () => {
         liElement.classList.add("historyItem");
         liElement.innerText = log;
         history.appendChild(liElement);
-
-        // history.innerHTML += `<li class="historyItem">${log}</li> `
     })
 }
 
