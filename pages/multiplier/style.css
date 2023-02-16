@@ -76,7 +76,7 @@ body {
 
 .alu {
     grid-area: alu;
-    clip-path: polygon(49% 32%, 60% 0, 100% 0, 78% 100%, 25% 100%, 0 0, 36% 0);
+    clip-path: polygon(50% 33%, 60% 0, 100% 0, 78% 100%, 25% 100%, 0 0, 40% 0);
     width: 100%;
     height: 100%;
     background-color: rgb(97, 95, 95);
