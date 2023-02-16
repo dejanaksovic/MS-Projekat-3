@@ -38,9 +38,10 @@ export default function ALUoptimisedDivision() {
                 this.iteration++
                 this.undoStack.push(['remandquot', remandquot])
         
-                this.currStep++
-                this.currStep %= this.steps.length
             }
+            
+            this.currStep++
+            this.currStep %= this.steps.length
         }else{
             console.log("This computation has concluded kindly sod off.")
         }

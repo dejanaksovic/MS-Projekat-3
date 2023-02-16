@@ -4,6 +4,7 @@ export default function RemainderandQuotient (viewPort, initialValue) {
     
     this.shiftL = () => {
         this.value = this.value.slice(1) + '0'
+        this.render()
     }
 
     this.setValue = (value) => {

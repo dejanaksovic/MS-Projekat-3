@@ -17,13 +17,14 @@ if(!initialValues.divident  || !initialValues.divisor) {
 
 const formater = new Formater()
 
-const divisor = new Divisor(document.querySelector("#divisor-view-port"), `${initialValues.divisor}${Extender("0", initialValues.divisor.length)}`)
-const remandquot = new RemainderAndQuotient(document.querySelector("#remainder-view-port"), `${Extender("0", initialValues.divisor.length)}${initialValues.divident}`)
+const divisor = new Divisor(document.querySelector("#divisor-view-port"), `${Extender("0", initialValues.divisor.length)}${initialValues.divisor}`)
+const remandquot = new RemainderAndQuotient(document.querySelector("#remainder-view-port"), `${Extender("0", initialValues.divisor.length * 2)}${initialValues.divident}`)
 const alu = new ALU()
 
 
-ALUoptimisedDivisionLocal.steps.push(remandquot.shiftL)
-ALUoptimisedDivisionLocal.steps.push(formater.subBinDec)
+
+alu.steps.push(remandquot.shiftL)
+alu.steps.push(formater.subBinDec)
 
 //buttons
 const doButton = document.querySelector("#do")
@@ -34,7 +35,7 @@ let historyLog = []
 doButton.addEventListener("click", e => {
     const testDiv = alu.stepFunc(remandquot.value, divisor.value)
     if(testDiv[0]) {
-        remainder.setValue(testDiv[0])
+        remandquot.setValue(testDiv[0])
     }
     if(testDiv[1] != undefined){
         historyLog.push(testDiv[1])
