@@ -103,8 +103,8 @@ const animate = () => {
     //RESET ALL COMPONENTS 
     for(const component of components) {
         component.classList.remove("active")
-        ALUC.style.setProperty("border", "none")
     }
+    ALUC.classList.remove("active");
 
     //POSLEDNJA KOMPONENTA NA KOJOJ JE IZVRSENA KOMPUTACIJA IZ ALU STACKA SE UZIMA I STAVLJA SE DA JE ACTIVE
     const componentName = alu.undoStack[alu.undoStack.length-1][0]
@@ -121,6 +121,6 @@ const animate = () => {
     //PROVERA ZA ALU, UKOLIKO JE CARRY OUT 1 I UKOLIKO JE NA RED PRODUCT
     if (alu.carryOut === "1" && componentName === "multiplicand") {
         console.log("ALU ACTIVATED");
-        ALUC.style.setProperty("border", ".2rem solid white")
+        ALUC.classList.add("active");
     }
 }
