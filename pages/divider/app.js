@@ -30,10 +30,10 @@ const alu = new ALU()
 const divisorC = document.querySelector(".divisor")
 const quotientC = document.querySelector(".quotient")
 const remainderC = document.querySelector(".remainder")
-const aluC = document.querySelector(".alu")
+const ALUC = document.querySelector(".alu")
 const controlC = document.querySelector(".control")
 
-const components = [divisorC, quotientC, remainderC, aluC]
+const components = [divisorC, quotientC, remainderC, ALUC]
 
 console.log(initialValues.divident)
 
@@ -107,7 +107,7 @@ const animate = () => {
     for (const component of components) {
         component.classList.remove("active")
     }
-    aluC.style.setProperty("border", "none")
+    ALUC.classList.remove("active");
     controlC.style.setProperty("border", "none")
     
     //GET THE LAST COMPONENT TROUGH UNDOSTACK
@@ -124,12 +124,12 @@ const animate = () => {
 
         document.querySelector("#control-view-port").textContent = `1 = ${alu.carryIn}`
         controlC.style.setProperty("border", ".2rem solid var(--animation-primary)")
-        console.log(aluC.classList);
+        console.log(ALUC.classList);
     }
 
     //ACTIVATE ALU WHEN SUBTRACTION DOES THE THING AS WELL AS DIVISOR
     if (componentName === "remainder") {
-        aluC.style.setProperty("border", ".2rem solid white")
         divisorC.classList.add("active")
+        ALUC.classList.add("actve");
     }
 }

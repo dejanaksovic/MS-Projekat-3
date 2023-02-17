@@ -76,16 +76,18 @@ body {
 
 .alu {
     grid-area: alu;
-    clip-path: polygon(50% 33%, 60% 0, 100% 0, 78% 100%, 25% 100%, 0 0, 40% 0);
     width: 100%;
     height: 100%;
-    background-color: rgb(97, 95, 95);
+    fill: rgb(97, 95, 95);
     display: flex;
     justify-content: center;
     place-items: center;
-    align-items: center;
     margin: 0%;
     padding: 0%;
+}
+
+.alu p {
+    position: absolute;
 }
 
 #do {
@@ -197,5 +199,5 @@ p {
 
 .active {
     --animation-primary: white;
-    box-shadow: 0 0 2rem var(--animation-primary)
+    filter: drop-shadow(0 0 1rem var(--animation-primary));
 }
