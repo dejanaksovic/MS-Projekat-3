@@ -26,12 +26,15 @@ const secondLabel = document.querySelector("label[for='second-operand'")
 const additional = document.querySelector(".custom-dropdown")
 additional.style.setProperty("display", "none")
 
-let bits = undefined
+let defaultSize = document.getElementById('bit16')
+defaultSize.checked = true
+
+let bits = 16
 
 for (const radio of radios) {
     radio.addEventListener("click", e => {
         bits = radio.value
-        console.log(bits);
+        //console.log(bits);
     })
 }
 
@@ -77,15 +80,20 @@ secondOperand.addEventListener("input", e=> {
 buttonSubmit.addEventListener("click", e=> {
     e.preventDefault()
     
+    if (type.value == 'null'){
+        alert("Izaberite zeljeni hardver.");
+        return
+    }
+
     if (firstOperand.value == "" || secondOperand.value == "") {
         //@bodln Ovo treba da se izbaci negde ispod forme kao warning error
-        console.log("Please enter the innital values");
+        alert("Unesite inicijalne vrednosti.");
         return
     }
 
     if (!checkValidation(firstOperand.value, bits) || !checkValidation(secondOperand.value, bits/2)) {
         //@bodln I ovde
-        console.log("Invlaid number range, try changing the number or incrise the number of bits")
+        alert("Uneseni broj ne može biti predstavljen trenutnim brojem bitova.")
         return
     }
 
@@ -111,6 +119,6 @@ buttonSubmit.addEventListener("click", e=> {
             Router.dividerOptimized()
             break;
         default:
-            alert("Please select the type of architecture you want") 
+            alert("Izaberite zeljeni hardver.") 
     }
 })
