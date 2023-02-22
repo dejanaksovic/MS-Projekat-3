@@ -26,10 +26,10 @@ const secondLabel = document.querySelector("label[for='second-operand'")
 const additional = document.querySelector(".custom-dropdown")
 additional.style.setProperty("display", "none")
 
-let defaultSize = document.getElementById('bit16')
+let defaultSize = document.getElementById('bit8')
 defaultSize.checked = true
 
-let bits = 16
+let bits = 8
 
 for (const radio of radios) {
     radio.addEventListener("click", e => {
