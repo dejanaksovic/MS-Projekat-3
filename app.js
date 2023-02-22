@@ -39,6 +39,12 @@ for (const radio of radios) {
 }
 
 type.addEventListener("change", e => {
+
+    if(!type.value) {
+        additional.style.setProperty("display", "none");
+        return
+    }
+
     additional.style.setProperty("display", "flex")
 
     if(type.value.startsWith("multiplier")) {
@@ -80,7 +86,7 @@ secondOperand.addEventListener("input", e=> {
 buttonSubmit.addEventListener("click", e=> {
     e.preventDefault()
     
-    if (type.value == 'null'){
+    if (!type.value){
         alert("Izaberite zeljeni hardver.");
         return
     }
