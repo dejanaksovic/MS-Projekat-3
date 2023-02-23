@@ -65,15 +65,18 @@ buttonStep.addEventListener("click", e  => {
 })
 
 buttonConclude.addEventListener("click", e => {
-    let doInterval = setInterval( () => {
+    var doInterval = setInterval( () => {
         stepEvent()
-        alu.undoStack.length == multiplicant.value.length - 1 ? clearInterval(doInterval) : ""
+        if (alu.iteration == multiplier.value.length) {
+            clearInterval(doInterval)
+        }
     }, 1000)
 })
 
 let renderHistory = () => {
 
     const history = document.getElementById("history");
+    //SEKURITI RISC, REFACTOR CODE?
     history.innerHTML = "";
 
     historyLog.forEach((log) => {
@@ -116,7 +119,7 @@ buttonUndo.addEventListener("click", e => {
 })
 
 buttonReset.addEventListener("click", e => {
-    // <---------------------------------------------------------------- Dion-chan -------------------------------------------------
+    // <---------------------------------------------------------------- @dejanaksovic DONE -------------------------------------------------
     for(let i = 0; i < multiplier.value.length * 3; i++){
         undoEvent()
     }
