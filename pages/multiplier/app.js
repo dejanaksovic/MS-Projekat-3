@@ -161,7 +161,7 @@ const animate = () => {
     }
 
     if (componentName === "product" && alu.carryOut === '1') {
-        product.setValue(`${alu.undoStack[alu.undoStack.length-1][1]} \n +${multiplicant.value} \n ${product.value}`)
+        product.viewBind.textContent= (`${alu.undoStack[alu.undoStack.length-1][1]} \n +${multiplicant.value} \n ${product.value}`)
         ALUC.classList.add("active");
         multiplicandC.classList.add("active")
     }
